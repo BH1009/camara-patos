@@ -8,7 +8,9 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.AWTEvent;
 import java.awt.Color;
-
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
 
 
 /**
@@ -22,23 +24,33 @@ public class Camara extends JFrame implements ActionListener{
     private JTextArea area;
     private JScrollPane scroll;
     private JLabel et1;
+    private JPanel panel;
     
     public Camara(){
         
-        setTitle("CAM");
+        Webcam webcam = Webcam.getDefault();
+        webcam.open();
+        
+        WebcamPanel panel= new WebcamPanel(webcam);
+        panel.setFPSDisplayed(true);
+        panel.setDisplayDebugInfo(true);
+        panel.setImageSizeDisplayed(true);
+        panel.setMirrored(true);
+
+        
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(Color.white);
+        getContentPane().setBackground(Color.red);
         
         b1 = new JButton("Capturar");
         b1.setBounds(160,500,100,30);
         add(b1);
         
-        b2 = new JButton("Alejar");
+        b2 = new JButton("Angular");
         b2.setBounds(10, 500, 100, 30);
         add(b2);
         
-        b3 = new JButton("Acercar");
+        b3 = new JButton("Zoom");
         b3.setBounds(320, 500, 100, 30);
         add(b3);
         
@@ -54,8 +66,8 @@ public class Camara extends JFrame implements ActionListener{
         
         
         //area = new JTextArea();
-        et1 = new JLabel("");
-        scroll = new JScrollPane(et1);
+       
+        scroll = new JScrollPane(panel);
         scroll.setBounds(30, 40, 380, 450);
         scroll.setVisible(false);
         add(scroll);
