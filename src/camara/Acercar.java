@@ -8,8 +8,6 @@ package camara;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-
-
 //Librerias para mostrar la camara
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
@@ -19,42 +17,39 @@ import com.github.sarxos.webcam.WebcamPanel;
  * @author Julian 
  * @author Brayan
  */
-
-public class Camara extends JFrame implements ActionListener{
-
+public class Acercar extends JFrame implements ActionListener{
+    
     private JButton b1,b2,b3,b4,b5,b6,b7;
     private JTextArea area;
     private JScrollPane scroll;
+    private JPanel panel;
     
-    
-    public Camara(){
+    public Acercar(){
         
-        Webcam webcam = Webcam.getDefault();//Se crea el objeto webcam 
-        webcam.open();//Se inicializa
-        WebcamPanel panel= new WebcamPanel(webcam);//Se crea el panel domnde se va a visulaizar 
+        Webcam webcam = Webcam.getDefault();
+        webcam.open();
+        WebcamPanel panel= new WebcamPanel(webcam);
         panel.setMirrored(true);
         
         setLayout(null);
-        setTitle("CamDucks");
+        setTitle("CamDucks acercamiento x1");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.white);
         
+         
         b1 = new JButton("Validar");
         b1.setBounds(160,515,100,30);
         add(b1);
-        b1.setVisible(false);
         b1.addActionListener(this);
         
         b2 = new JButton("Alejar");
         b2.setBounds(10, 515, 100, 30);
         add(b2);
-        b2.setVisible(false);
         b2.addActionListener(this);
         
-        b3 = new JButton("Acercar");
+        b3 = new JButton("Acercar x2");
         b3.setBounds(320, 515, 100, 30);
         add(b3);
-        b3.setVisible(false);
         b3.addActionListener(this);
         
         b4 = new JButton("Encender");
@@ -66,21 +61,18 @@ public class Camara extends JFrame implements ActionListener{
         b5.setBounds(300,560,90,30);
         b5.addActionListener(this);
         add(b5);
-        b5.setVisible(false);
         
         b6 = new JButton("Flash");
         b6.setBounds(10,15,90,30);
         b6.addActionListener(this);
-        add(b6);
-        b6.setVisible(false);        
+        add(b6);      
         
         //setBounds(30, 40,380, 450);
         scroll = new JScrollPane(panel);
-        scroll.setBounds(30,55,380, 450);
-        scroll.setVisible(false);
+        scroll.setBounds(0,55,450, 450);
+        scroll.setVisible(true);
         scroll.setBackground(Color.WHITE);
         add(scroll);
-        
     }
     
     public void actionPerformed(ActionEvent e){
@@ -94,8 +86,8 @@ public class Camara extends JFrame implements ActionListener{
         }
         
         if(e.getSource() == b3){
-            Acercar in = new Acercar();
-            in.setBounds(0, 0,450, 640);
+            Acercarx2 in = new Acercarx2();
+            in.setBounds(0, 0, 450, 640);
             in.setVisible(true);
             in.setResizable(false);
             in.setLocationRelativeTo(null);
@@ -125,22 +117,15 @@ public class Camara extends JFrame implements ActionListener{
         if(e.getSource() == b6){
             JOptionPane.showMessageDialog(null,"Flash encendido");
         }
-        
-        
     }
-     
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Camara in = new Camara();
+        Acercar in = new Acercar();
         in.setBounds(0,0,450,640);
         in.setVisible(true);
         in.setResizable(false);
         in.setLocationRelativeTo(null);
-        
-        
     }
-
-    
     
 }
