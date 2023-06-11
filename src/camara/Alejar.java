@@ -8,22 +8,24 @@ package camara;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+
 //Librerias para mostrar la camara
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
+
 /**
  * @author Diego
  * @author Julian 
  * @author Brayan
  */
-public class Normal extends JFrame implements ActionListener{
+public class Alejar extends JFrame implements ActionListener {
 
     private JButton b1,b2,b3,b4,b5,b6,b7;
     private JTextArea area;
     private JScrollPane scroll;
-    private JPanel panel;
     
-    public Normal(){
+    
+    public Alejar(){
         
         Webcam webcam = Webcam.getDefault();
         webcam.open();
@@ -31,7 +33,7 @@ public class Normal extends JFrame implements ActionListener{
         panel.setMirrored(true);
         
         setLayout(null);
-        setTitle("CamDucks");
+        setTitle("CamDucks Alejar ");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.white);
         
@@ -41,7 +43,7 @@ public class Normal extends JFrame implements ActionListener{
         add(b1);
         b1.addActionListener(this);
         
-        b2 = new JButton("Alejar");
+        b2 = new JButton("Normal");
         b2.setBounds(10, 515, 100, 30);
         add(b2);
         b2.addActionListener(this);
@@ -68,7 +70,7 @@ public class Normal extends JFrame implements ActionListener{
         
         //setBounds(30, 40,380, 450);
         scroll = new JScrollPane(panel);
-        scroll.setBounds(30,55,380, 450);
+        scroll.setBounds(100,100,250, 400);
         scroll.setVisible(true);
         add(scroll);
     }
@@ -80,7 +82,7 @@ public class Normal extends JFrame implements ActionListener{
         }
         
         if(e.getSource() == b2){
-            Alejar in = new Alejar();
+            Normal in = new Normal();
             in.setBounds(0, 0, 450, 640);
             in.setVisible(true);
             in.setResizable(false);
@@ -121,10 +123,9 @@ public class Normal extends JFrame implements ActionListener{
             JOptionPane.showMessageDialog(null,"Flash encendido");
         }
     }
-
     public static void main(String[] args) {
         // TODO code application logic here
-        Normal in = new Normal();
+        Alejar in = new Alejar();
         in.setBounds(0,0,450,640);
         in.setVisible(true);
         in.setResizable(false);

@@ -71,7 +71,6 @@ public class Acercar extends JFrame implements ActionListener{
         scroll = new JScrollPane(panel);
         scroll.setBounds(0,55,450, 450);
         scroll.setVisible(true);
-        scroll.setBackground(Color.WHITE);
         add(scroll);
     }
     
@@ -82,7 +81,12 @@ public class Acercar extends JFrame implements ActionListener{
         }
         
         if(e.getSource() == b2){
-            
+            Alejar in = new Alejar();
+            in.setBounds(0, 0, 450, 640);
+            in.setVisible(true);
+            in.setResizable(false);
+            in.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
         
         if(e.getSource() == b3){
